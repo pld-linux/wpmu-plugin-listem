@@ -2,12 +2,13 @@
 Summary:	WordPressMU plugin to list alphabetically all public blogs in one page
 Name:		wpmu-plugin-%{plugin}
 Version:	0.1
-Release:	0.1
+Release:	0.3
 License:	GPL v2+
 Group:		Applications/Publishing
 Source0:	http://wpmudev.org/download/738066546_Listem-%{version}.zip
 # Source0-md5:	2cd9d80d118c60111a8359aa37e1cfc4
 URL:		http://wpmudev.org/project/Listem
+Patch0:		avatar-hook.patch
 BuildRequires:	rpmbuild(macros) >= 1.553
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
@@ -36,6 +37,7 @@ mv *.txt *.php wpmudev
 rm -f license.txt
 mv {read-me,readme}.txt
 %undos readme.txt
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT

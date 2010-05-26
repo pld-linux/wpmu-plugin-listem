@@ -1,0 +1,14 @@
+--- wpmu-plugin-listem-0.1/listem.php~	2008-09-18 14:35:48.000000000 +0300
++++ wpmu-plugin-listem-0.1/listem.php	2010-05-19 14:38:38.158256745 +0300
+@@ -54,6 +54,11 @@
+ 		//output list
+ 		for($i=0;$i<$blog_count;$i++) {
+ 			echo $begin_wrap."<a href='".$bloginfo[$i]['url']."'>";
++			if (function_exists('dcdb_get_avatar')) {
++				echo '<img class="m_avatar" width="24" height="24" src="';
++				echo dcdb_get_avatar($bloginfo[$i]['bid']);
++				echo'">';
++			}
+ 			if($name_or_url == 'url') echo $bloginfo[$i]['url'];
+ 			else echo $bloginfo[$i]['name'];
+ 			echo "</a>".$end_wrap."\n";
